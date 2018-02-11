@@ -2,7 +2,7 @@
 
 class exp extends require('./function') {
 	constructor(x) {
-		super(x);
+		super('exp', x);
 	}
 }
 

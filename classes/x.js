@@ -2,7 +2,7 @@
 
 class x extends require('./function') {
     constructor() {
-        super('');
+        super('x', '');
     }
 }
 

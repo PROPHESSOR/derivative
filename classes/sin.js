@@ -2,7 +2,7 @@
 
 class sin extends require('./function') {
 	constructor(x) {
-		super(x);
+		super('sin', x);
 	}
 }
 

@@ -3,7 +3,8 @@
 const classes = [
 	'cos',
 	'exp',
-	'sin'
+	'sin',
+	'x'
 ];
 
 for (const c of classes) {

@@ -13,11 +13,12 @@ class Parser {
 	parse(_x = this._tmp) {
 		let x = _x;
 
-		this.prepare(x);
+		x = this.prepare(x);
 
 		try {
 			while (x !== '') {
 				const tmp = this.parseone(x);
+
 
 				if (!tmp) continue;
 
@@ -41,7 +42,7 @@ class Parser {
 	}
 
 	parsesub(_x) {
-		let x = _x;
+		let {x} = _x;
 
 		// this.prepare(x);
 
@@ -50,13 +51,15 @@ class Parser {
 				console.log(x);
 				const tmp = this.parseone(x);
 
-				if (!tmp) break;
+				if (!tmp) continue;
 
 				if (classes[tmp[1]]) {
-					this._parsed[this._parsed.length - 1].sub.push(new classes[tmp[1]](tmp[2]));
+					_x.sub.push(new classes[tmp[1]](tmp[2]));
 				} else {
 					console.warn(`Не найден класс для функции ${tmp[1]}`);
 				}
+
+				x = x.slice(tmp[0].length + tmp.index);
 			}
 		} catch (e) {
 			console.error(e);
@@ -72,7 +75,8 @@ class Parser {
 	}
 
 	prepare(x = this._input) {
-		const tmp = this._input;
+		const tmp = this._input
+			.replace(/(\W)(\w)(\W)/g, '$1$2()$3');
 			// .replace(/\+/g, 'plus()')
 			// .replace(/-/g, 'minus()')
 			// .replace(/\*/g, 'multiply()')

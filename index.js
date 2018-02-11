@@ -6,4 +6,6 @@ const Parser = require('./parser');
 
 const parser = new Parser(prompt('Введите функцию:'));
 
-console.dir(parser.parse());
+const out = parser.parse();
+
+console.log(JSON.stringify(out, 0, 4));
